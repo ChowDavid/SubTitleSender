@@ -89,7 +89,7 @@
             </descriptorRefs>
             <archive>
               <manifest>
-                <mainClass>au/david/church/subtitle/SubTitleDesktop</mainClass>
+                <mainClass>au.david.church.subtitle.SubTitleDesktop</mainClass>
               </manifest>
             </archive>
           </configuration>
