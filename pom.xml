@@ -27,7 +27,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.16</version>
+      <version>1.18.20</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -89,7 +89,7 @@
             </descriptorRefs>
             <archive>
               <manifest>
-                <mainClass>au.david.church.subtitle.SubTitleDesktop</mainClass>
+                <mainClass>au.david.church.subtitle.SubTitleSender</mainClass>
               </manifest>
             </archive>
           </configuration>

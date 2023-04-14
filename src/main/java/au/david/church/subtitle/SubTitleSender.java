@@ -6,8 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static java.lang.System.exit;
 
-public class SubTitleDesktop {
+public class SubTitleSender {
     private static final int WIDTH=35;
 
     public static void main(String[] args) throws IOException {
@@ -37,8 +37,18 @@ public class SubTitleDesktop {
         int input = 0;
         int maxId = subtitles.stream().map(s->s.getId()).max(Integer::compareTo).get();
         int port = 6868;
+        Enumeration<NetworkInterface> ni = NetworkInterface.getNetworkInterfaces();
+        while(ni.hasMoreElements()){
+            Enumeration<InetAddress> ee = ni.nextElement().getInetAddresses();
+            while(ee.hasMoreElements()){
+                InetAddress i = ee.nextElement();
+                if (!i.isLinkLocalAddress() && i.getHostAddress().startsWith("192")){
+                    System.out.println("Address "+i.getHostAddress());
+                }
+            }
+        }
         try(ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println("Server is listening on port " + port);
+            System.out.println("This Server port:" + port);
             while (true) {
                 Socket socket = serverSocket.accept();
                 OutputStream os = socket.getOutputStream();

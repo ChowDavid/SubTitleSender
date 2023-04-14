@@ -25,9 +25,10 @@ public class SubTitleDto {
             }
         } else {
             int main=cells[1].length();
-            int both = (width-main)/2;
+            int both = (int)Math.floor((width-main)/2*2.5);
             String side = "                                                               ".substring(0,both);
-            subtitle = side+cells[1]+side;
+            //subtitle = side+cells[1];
+            subtitle = cells[1];
         }
     }
 
